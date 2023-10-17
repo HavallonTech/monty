@@ -33,4 +33,4 @@ typedef struct instruction_s
 } instruction_t;
 
 
-#endif /*_MONTY_H_*/
+#endif
