@@ -53,4 +53,5 @@ int is_valid_int(char *s);
 
 /*get_bc_opcode*/
 void op_push(stack_t **stack, unsigned int ln_num);
+void op_pall(stack_t **stack, unsigned int ln_num);
 #endif /*_MONTY_H_*/

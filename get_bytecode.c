@@ -6,20 +6,24 @@
  */
 instruction_t *get_bc_opcode(const char *bc_opcode)
 {
-	instruction_t op_array[] = {
+	instruction_t *op_array = NULL;
+	instruction_t op_set[] = {
 		{"push", op_push},
-	/*	{"pall", op_pall},*/
+		{"pall", op_pall},
 		{NULL, NULL}
 	};
 	int n = 0;
 
 	if (bc_opcode == NULL)
 		return (NULL);
-	while (op_array[n].opcode)
+	while (op_set[n].opcode)
 	{
-		if (strcmp(op_array[n].opcode, bc_opcode) == 0)
-			return (&op_array[n]);
+		if (strcmp(op_set[n].opcode, bc_opcode) == 0)
+		{
+			op_array = &op_set[n];
+			break;
+		}
 		n++;
 	}
-	return (NULL);
+	return (op_array);
 }

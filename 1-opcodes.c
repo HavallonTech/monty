@@ -24,3 +24,20 @@ void op_push(stack_t **stack, unsigned int ln_num)
 	stack_val = atoi(args);
 	pushNode(stack, stack_val);
 }
+/**
+ * op_pall - function prints all the element in the stack
+ * @stack: double pointer to the stack
+ * @ln_num: line number for error position
+ * Return: returns void
+ */
+void op_pall(stack_t **stack, unsigned int ln_num)
+{
+	(void)ln_num; /*make is unusable*/
+	stack_t *curr = *stack;
+
+	while (curr)
+	{
+		printf("%d\n", curr->n);
+		curr = curr->next;
+	}
+}
