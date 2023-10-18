@@ -10,6 +10,7 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 	instruction_t op_set[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"add", op_add},
 		{NULL, NULL}
 	};
 	int n = 0;

@@ -43,3 +43,51 @@ void op_pall(stack_t **stack, unsigned int ln_num)
 		curr = curr->next;
 	}
 }
+/**
+ * op_add - function to add element in the stack
+ * @stack: double pointer to the stack
+ * @ln_num: line number for error position
+ * Return: returns void
+ */
+void op_add(stack_t **stack, unsigned int ln_num)
+{
+	stack_t *curr;
+	int len = 0, temp;
+
+	curr = *stack;
+
+	while (curr)
+	{
+		len++;
+		curr = curr->next;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d, can't add element to the stack\n", ln_num);
+		fclose(bcFile);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	curr = *stack;
+	temp = curr->n + curr->next->n;
+	curr->next->n = temp;
+	*stack = curr->next;
+	free(curr);
+}
+/**
+ * op_add - function to add element in the stack
+ * @stack: double pointer to the stack
+ * 
+ * Return: returns void
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *temp;
+	temp = head;
+	while(head)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
+}
