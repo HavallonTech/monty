@@ -32,8 +32,10 @@ void op_push(stack_t **stack, unsigned int ln_num)
  */
 void op_pall(stack_t **stack, unsigned int ln_num)
 {
+	stack_t *curr;
+
 	(void)ln_num; /*make is unusable*/
-	stack_t *curr = *stack;
+	curr = *stack;
 
 	while (curr)
 	{
