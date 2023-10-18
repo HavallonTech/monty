@@ -75,9 +75,8 @@ void op_add(stack_t **stack, unsigned int ln_num)
 	free(curr);
 }
 /**
- * op_add - function to add element in the stack
- * @stack: double pointer to the stack
- *
+ * free_stack - function to add element in the stack
+ * @head: head of stack
  * Return: returns void
  */
 void free_stack(stack_t *head)

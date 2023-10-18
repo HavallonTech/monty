@@ -45,7 +45,7 @@ void bcprocess(FILE *bc, stack_t **stack)
 	unsigned int bc_numln = 0;/*bc_numln keeps track of the line instruction*/
 
 	/*read = getline(&bc_buff, &bc_len, bc);*/
-	while ((getline(&bc_buff, &bc_len, bc))!= -1)
+	while ((getline(&bc_buff, &bc_len, bc)) != -1)
 	{
 		bc_numln++;
 		bc_opcode = strtok(bc_buff, DELIM);
