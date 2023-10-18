@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#define _GNU_SOURCE 1
 
 #define DELIM " \t\n"
 /**
@@ -56,4 +57,8 @@ void op_push(stack_t **stack, unsigned int ln_num);
 void op_pall(stack_t **stack, unsigned int ln_num);
 void free_stack(stack_t *head);
 void op_add(stack_t **stack, unsigned int ln_num);
+
+ssize_t getline(char **bc_buff, size_t *bc_len, FILE *bc);
+
+
 #endif /*_MONTY_H_*/
