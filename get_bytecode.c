@@ -4,18 +4,21 @@
  * @bc_opcode: passed operation code argument
  * Return: returns the address of the required operation code passed
  */
-instruction_t *get_bc_opcode(char *bc_opcode)
+instruction_t *get_bc_opcode(const char *bc_opcode)
 {
 	instruction_t op_array[] = {
 		{"push", op_push},
-		{"pall", op_pall},
+	/*	{"pall", op_pall},*/
 		{NULL, NULL}
 	};
 	int n = 0;
+
+	if (bc_opcode == NULL)
+		return (NULL);
 	while (op_array[n].opcode)
 	{
 		if (strcmp(op_array[n].opcode, bc_opcode) == 0)
-			return &op_array[n];
+			return (&op_array[n]);
 		n++;
 	}
 	return (NULL);

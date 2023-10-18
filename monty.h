@@ -2,6 +2,7 @@
 #define _MONTY_H_
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <ctype.h>
 #include <unistd.h>
@@ -46,10 +47,10 @@ void bcprocess(FILE *bc, stack_t **stack);
 void bc_exe(const char *opcode, unsigned int cmd_num, stack_t **stack);
 instruction_t *get_bc_opcode(const char *opcode);
 
-/*C functions*/
-ssize_t getline(char *bc, size_t bc_len, FILE *bc_dp);
-char *strtok(char *bc, char *delim);
+/*aux functions*/
+void pushNode(stack_t **stack, int val);
+int is_valid_int(char *s);
 
 /*get_bc_opcode*/
-instruction_t *get_bc_opcode(char *bc_opcode);
+void op_push(stack_t **stack, unsigned int ln_num);
 #endif /*_MONTY_H_*/
