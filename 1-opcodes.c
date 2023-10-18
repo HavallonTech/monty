@@ -64,7 +64,7 @@ void op_add(stack_t **stack, unsigned int ln_num)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d, can't add element to the stack\n", ln_num);
-		fclose(bcFile);
+	/*	fclose(bcFile);*/
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -77,14 +77,15 @@ void op_add(stack_t **stack, unsigned int ln_num)
 /**
  * op_add - function to add element in the stack
  * @stack: double pointer to the stack
- * 
+ *
  * Return: returns void
  */
 void free_stack(stack_t *head)
 {
 	stack_t *temp;
+
 	temp = head;
-	while(head)
+	while (head)
 	{
 		temp = head->next;
 		free(head);
