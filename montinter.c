@@ -46,14 +46,14 @@ void bcprocess(FILE *bc, stack_t **stack)
 	/*read = getline(&bc_buff, &bc_len, bc);*/
 	while ((fgets(bc_buff, bc_len, bc)) != NULL)
 	{
-		bc_len++;
+		bc_numln++;
 		bc_opcode = strtok(bc_buff, DELIM);
 		/*this checks if the bc_buff is empty or commented and ignore*/
 		if (bc_opcode == NULL || bc_opcode[0] == '#')
 			continue;
 
 		bc_exe(bc_opcode, bc_numln, stack);
-		bc_numln++;
+		/*bc_numln++;*/
 	}
 	free(bc_buff);
 }

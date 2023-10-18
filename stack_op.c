@@ -25,6 +25,8 @@ void pushNode(stack_t **stack, int val)
 
 	*stack = newNode;
 }
+
+
 /**
  * is_valid_int - function checks if a string is a valid integer argument
  * @s: string argument passed
