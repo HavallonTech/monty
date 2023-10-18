@@ -44,10 +44,10 @@ void bcprocess(FILE *bc, stack_t **stack)
 /*	ssize_t read;*/
 	unsigned int bc_numln = 0;/*bc_numln keeps track of the line instruction*/
 
-	/*read = getline(&bc_buff, &bc_len, bc);*/
+/*	read = getline(&bc_buff, &bc_len, bc);*/
 	while ((getline(&bc_buff, &bc_len, bc)) != -1)
 	{
-		bc_numln++;
+		bc_len++;
 		bc_opcode = strtok(bc_buff, DELIM);
 		/*this checks if the bc_buff is empty or commented and ignore*/
 		if (bc_opcode == NULL || bc_opcode[0] == '#')
@@ -55,7 +55,7 @@ void bcprocess(FILE *bc, stack_t **stack)
 		/*printf("This is a string %s\n", bc_opcode);*/
 
 		bc_exe(bc_opcode, bc_numln, stack);
-		/*bc_numln++;*/
+		bc_numln++;
 	}
 	free(bc_buff);
 }
