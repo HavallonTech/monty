@@ -2,7 +2,13 @@
 #define _MONTY_H_
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <ctype.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 
+#define DELIM " \t\n"
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -19,6 +25,8 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern stack_t stack;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -33,5 +41,15 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*main functions*/
+void bcprocess(FILE *bc, stack_t **stack);
+void bc_exe(const char *opcode, unsigned int cmd_num, stack_t **stack);
+instruction_t *get_bc_opcode(const char *opcode);
 
-#endif
+/*C functions*/
+ssize_t getline(char *bc, size_t bc_len, FILE *bc_dp);
+char *strtok(char *bc, char *delim);
+
+/*get_bc_opcode*/
+instruction_t *get_bc_opcode(char *bc_opcode);
+#endif /*_MONTY_H_*/
