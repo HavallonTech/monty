@@ -73,6 +73,8 @@ void op_div(stack_t **stack, unsigned int ln_num)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	/* check if curr->next->n and curr->n are numbers */
+	/*if (  &&   ) */
 	temp = (curr->next->n) / (curr->n);
 	curr->next->n = temp;
 	*stack = curr->next;
