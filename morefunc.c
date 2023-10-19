@@ -11,6 +11,8 @@ void op_rotr(stack_t **stack, unsigned int ln_num)
 	stack_t *curr;
 
 	curr = *stack;
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
 	while (curr->next)
 	{
 		curr = curr->next;
