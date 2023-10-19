@@ -64,7 +64,7 @@ void op_add(stack_t **stack, unsigned int ln_num)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d, can't add element to the stack\n", ln_num);
-	/*	fclose(bcFile);*/
+		/*	fclose(bcFile);*/
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -90,4 +90,33 @@ void free_stack(stack_t *head)
 		free(head);
 		head = temp;
 	}
+}
+/**
+ * op_mul - function multiply
+ * @stack: double pointer to the stack
+ * @ln_num: line number for error position
+ * Return: return voids
+ */
+void op_mul(stack_t **stack, unsigned int ln_num)
+{
+	stack_t *curr;
+	int len = 0, temp;
+
+	curr = *stack;
+	while (curr)
+	{
+		curr = curr->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", ln_num);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	curr = *stack;
+	temp = (curr->next->n) * (curr->n);
+	curr->next->n = temp;
+	*stack = curr->next;
+	free(stack);
 }
