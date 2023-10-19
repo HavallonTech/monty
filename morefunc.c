@@ -6,13 +6,12 @@
  * @ln_num: line number for error position
  * Return: return voids
  */
-void op_rotr(stack_t **stack, unsigned int ln_num)
+void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 {
 	stack_t *curr;
 
 	curr = *stack;
 
-	(void) ln_num;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
