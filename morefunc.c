@@ -26,5 +26,5 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 	curr->prev = NULL;
 	(*stack)->prev = curr;
 	(*stack) = curr;
-	free(stack);
+	free(curr);
 }
