@@ -72,7 +72,7 @@ void op_add(stack_t **stack, unsigned int ln_num)
 	temp = curr->n + curr->next->n;
 	curr->next->n = temp;
 	*stack = curr->next;
-	free(curr);
+	/*free(curr);*/
 }
 /**
  * free_stack - function to add element in the stack
