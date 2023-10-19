@@ -14,7 +14,9 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 
 
 	if (*stack == NULL || (*stack)->next == NULL)
+	{
 		return;
+	}
 	while (curr->next)
 	{
 		curr = curr->next;
@@ -24,5 +26,5 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 	curr->prev = NULL;
 	(*stack)->prev = curr;
 	(*stack) = curr;
-	/*free(stack);*/
+	free(stack);
 }
