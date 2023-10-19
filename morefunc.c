@@ -15,10 +15,10 @@ void op_rotr(stack_t **stack, unsigned int ln_num)
 	{
 		curr = curr->next;
 	}
-	curr->head = *stack;
+	curr->next = *stack;
 	curr->prev->next = NULL;
 	curr->prev = NULL;
-	(*head)->prev = curr;
-	(*head) = curr;
+	(*stack)->prev = curr;
+	(*stack) = curr;
 	/*free(stack);*/
 }
