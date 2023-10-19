@@ -9,6 +9,7 @@
 void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 {
 	stack_t *curr;
+	int len = 0;
 
 	curr = *stack;
 
@@ -17,6 +18,19 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 	{
 		return;
 	}
+
+	while (curr)
+	{
+		curr = curr->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't rotate, stack too short\n", 30);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	curr = *stack;
 	while (curr->next)
 	{
 		curr = curr->next;
@@ -26,5 +40,6 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 	curr->prev = NULL;
 	(*stack)->prev = curr;
 	(*stack) = curr;
-	free(curr);
+/*	free(curr);*/
+/*	free(stack);*/
 }
