@@ -59,6 +59,6 @@ void free_stack(stack_t *head);
 void op_add(stack_t **stack, unsigned int ln_num);
 
 ssize_t getline(char **bc_buff, size_t *bc_len, FILE *bc);
-
+void op_mul(stack_t **stack, unsigned int ln_num);
 
 #endif /*_MONTY_H_*/
