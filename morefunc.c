@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- *p_rotr - function to rotate the stack to the bottom
+ * op_rotr - function to rotate the stack to the bottom
  * @stack: double pointer to the stack
  * @ln_num: line number for error position
  * Return: return voids
