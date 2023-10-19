@@ -14,11 +14,13 @@ void op_push(stack_t **stack, unsigned int ln_num)
 	if (args == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", ln_num);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	if (!is_valid_int(args))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", ln_num);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	stack_val = atoi(args);
