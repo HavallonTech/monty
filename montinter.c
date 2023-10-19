@@ -47,25 +47,26 @@ void bcprocess(FILE *bc, stack_t **stack)
 	char *bc_buff = NULL;/*byte code buffer to store content the byte code file*/
 	size_t bc_len = 0;/*byte code length of the instruction per line*/
 /*	ssize_t read;*/
-	ssize_t readline = 1;/*to handle getline size */
+	ssize_t readline = 0;/*to handle getline size */
 	unsigned int bc_numln = 0;/*bc_numln keeps track of the line instruction*/
 
 /*	read = getline(&bc_buff, &bc_len, bc);*/
-	while (readline >= 1)
-	/*while ((readline = getline(&bc_buff, &bc_len, bc)) != -1) */
+	/*while (readline >= 1)*/
+	while ((readline = getline(&bc_buff, &bc_len, bc)) != -1)
 	{
-		readline = getline(&bc_buff, &bc_len, bc);
+		/*readline = getline(&bc_buff, &bc_len, bc);*/
 		bc_numln++;
 		bc_opcode = strtok(bc_buff, DELIM);
 		/*this checks if the bc_buff is empty or commented and ignore*/
 		if (bc_opcode == NULL || bc_opcode[0] == '#')
 			continue;
 		/*printf("This is a string %s\n", bc_opcode);*/
-		if (readline > 0)
-		{
-			bc_exe(bc_opcode, bc_numln, stack);
-		}
+		/*if (readline > 0)*/
+		/*{*/
+		bc_exe(bc_opcode, bc_numln, stack);
+		/*}*/
 		/*bc_numln++;*/
+		/*free(bc_buff);*/
 	}
 	free(bc_buff);
 }
