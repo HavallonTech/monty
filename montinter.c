@@ -10,7 +10,7 @@ int main(int ac, char *av[])
 	FILE *bcFile;
 	stack_t *stack = NULL;
 
-	if (ac == 1 || ac < 2)
+	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
