@@ -14,7 +14,7 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		/*		{"div", op_div},*/
 		{"mul", op_mul},
 		/*	{"pint", op_pint},*/
-		/*	{"pop", op_pop},*/
+		{"pop", op_pop},
 		{"swap", op_swap},
 		/*{"nop", op_nop},*/
 		{"sub", op_sub},
@@ -71,4 +71,25 @@ void op_swap(stack_t **stack, unsigned int ln_num)
 	tmp = curr->n;
 	curr->n = curr->next->n;
 	curr->next->n = tmp;
+}
+/**
+ * op_pop - pop the top
+ * @stack: stack head
+ * @ln_num: line_number
+ *
+ * Return: no void
+ */
+void op_pop(stack_t **stack, unsigned int ln_num)
+{
+	stack_t *curr;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", ln_num);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	curr = *stack;
+	*stack = curr->next;
+	free(curr);
 }

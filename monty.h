@@ -66,4 +66,5 @@ void op_mod(stack_t **stack, unsigned int ln_num);
 void op_pstr(stack_t **stack, __attribute__((unused)) unsigned int ln_num);
 void op_sub(stack_t **stack, unsigned int ln_num);
 void op_swap(stack_t **stack, unsigned int ln_num);
+void op_pop(stack_t **stack, unsigned int ln_num);
 #endif /*_MONTY_H_*/
