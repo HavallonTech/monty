@@ -96,6 +96,7 @@ void op_mod(stack_t **stack, unsigned int ln_num)
 	stack_t *curr;
 	int len = 0, tmp;
 	curr = *stack;
+
 	while (curr)
 	{
 		curr = curr->next;
@@ -114,11 +115,8 @@ void op_mod(stack_t **stack, unsigned int ln_num)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	if (isdigit(curr->next->n) && isdigit(curr->n))
-	{
-		tmp = (curr->next->n) % (curr->n);
-		curr->next->n = tmp;
-		*stack = curr->next;
-		free(curr);
-	}
+	tmp = (curr->next->n) % (curr->n);
+	curr->next->n = tmp;
+	*stack = curr->next;
+	free(curr);
 }
