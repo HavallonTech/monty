@@ -45,6 +45,7 @@ typedef struct instruction_s
 
 /*main functions*/
 void bcprocess(FILE *bc, stack_t **stack);
+ssize_t getline(char **bc_buff, size_t *bc_len, FILE *bc);
 void bc_exe(const char *opcode, unsigned int cmd_num, stack_t **stack);
 instruction_t *get_bc_opcode(const char *opcode);
 
@@ -55,10 +56,7 @@ int is_valid_int(char *s);
 /*get_bc_opcode*/
 void op_push(stack_t **stack, unsigned int ln_num);
 void op_pall(stack_t **stack, unsigned int ln_num);
-void free_stack(stack_t *head);
 void op_add(stack_t **stack, unsigned int ln_num);
-
-ssize_t getline(char **bc_buff, size_t *bc_len, FILE *bc);
 void op_mul(stack_t **stack, unsigned int ln_num);
 void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num);
 void op_div(stack_t **stack, unsigned int ln_num);
@@ -67,4 +65,7 @@ void op_pstr(stack_t **stack, __attribute__((unused)) unsigned int ln_num);
 void op_sub(stack_t **stack, unsigned int ln_num);
 void op_swap(stack_t **stack, unsigned int ln_num);
 void op_pop(stack_t **stack, unsigned int ln_num);
+void op_pint(stack_t **stack, unsigned int ln_num);
+
+void free_stack(stack_t *head);
 #endif /*_MONTY_H_*/

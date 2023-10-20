@@ -13,7 +13,7 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		{"add", op_add},
 		/*		{"div", op_div},*/
 		{"mul", op_mul},
-		/*	{"pint", op_pint},*/
+		{"pint", op_pint},
 		{"pop", op_pop},
 		{"swap", op_swap},
 		/*{"nop", op_nop},*/

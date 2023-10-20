@@ -20,7 +20,22 @@ void op_pop(stack_t **stack, unsigned int ln_num)
 	*stack = curr->next;
 	free(curr);
 }
-
+/**
+ * op_pint - function prints the value at the top of the stack
+ * @stack: double pointer to the stack(head)
+ * @ln_num: line number for error checking
+ * 
+ * Return: returns void
+ */
+void op_pint(stack_t **stack, unsigned int ln_num)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", ln_num);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
 /**
  * op_swap - a functio to swap top two elements of the stack.
  * @stack: stack head
