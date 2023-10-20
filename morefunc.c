@@ -114,8 +114,11 @@ void op_mod(stack_t **stack, unsigned int ln_num)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (curr->next->n) % (curr->n);
-	curr->next->n = tmp;
-	*stack = curr->next;
-	free(curr);
+	if (isdigit(curr->next->n) && isdigit(curr->n))
+	{
+		tmp = (curr->next->n) % (curr->n);
+		curr->next->n = tmp;
+		*stack = curr->next;
+		free(curr);
+	}
 }
