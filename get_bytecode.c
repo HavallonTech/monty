@@ -42,3 +42,4 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		n++;
 	}
 	return (op_array);
+}
