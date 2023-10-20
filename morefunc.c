@@ -120,3 +120,27 @@ void op_mod(stack_t **stack, unsigned int ln_num)
 	*stack = curr->next;
 	free(curr);
 }
+/**
+ * op_pstr - a function to prints the string starting at the top of the stack
+ * @stack: stack stack
+ * @counter: line_number
+ *
+ * Return: no return
+ */
+void op_pstr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
+{
+	stack_t *curr;
+/*	(void)ln_num;*/
+
+	curr = *stack;
+	while (curr)
+	{
+		if (curr->n > 127 || curr->n <= 0)
+		{
+			break;
+		}
+		printf("%c", curr->n);
+		curr = curr->next;
+	}
+	printf("\n");
+}
