@@ -4,7 +4,8 @@
  * op_rotr - function to rotate the stack to the bottom
  * @stack: double pointer to the stack
  * @ln_num: line number for error position
- * Return: return voids
+ *
+ * Return: oids
  */
 void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 {
@@ -40,14 +41,13 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 	curr->prev = NULL;
 	(*stack)->prev = curr;
 	(*stack) = curr;
-	/*	free(curr);*/
-	/*	free(stack);*/
 }
 /**
  * op_div - divides the top two elements of the stack.
  * @stack: stack head
  * @ln_num: line_number
- * Return: no return
+ *
+ * Return: void
  */
 void op_div(stack_t **stack, unsigned int ln_num)
 {
@@ -89,12 +89,14 @@ void op_div(stack_t **stack, unsigned int ln_num)
  * top element of the stack by the top element of the stack
  * @stack: stack head
  * @ln_num: line_number
- * Return: no return
+ *
+ * Return: void
  */
 void op_mod(stack_t **stack, unsigned int ln_num)
 {
 	stack_t *curr;
 	int len = 0, tmp;
+
 	curr = *stack;
 
 	while (curr)
@@ -123,16 +125,16 @@ void op_mod(stack_t **stack, unsigned int ln_num)
 /**
  * op_pstr - a function to prints the string starting at the top of the stack
  * @stack: stack stack
- * @counter: line_number
+ * @ln_num: line_number
  *
- * Return: no return
+ * Return: void
  */
 void op_pstr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 {
 	stack_t *curr;
-/*	(void)ln_num;*/
 
 	curr = *stack;
+
 	while (curr)
 	{
 		if (curr->n > 127 || curr->n <= 0)
@@ -143,4 +145,38 @@ void op_pstr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
 		curr = curr->next;
 	}
 	printf("\n");
+}
+/**
+  *op_sub- a function to subtracts the top element of the stack from
+  * the second top element of the stack
+  *@stack: stack head
+  *@ln_num: line_number
+  *
+  *Return: no return
+ */
+void op_sub(stack_t **stack, unsigned int ln_num)
+{
+	stack_t *curr;
+	int tmp, elements = 0;
+
+	curr = *stack;
+
+	while (curr != NULL)
+	{
+		elements++;
+		curr = curr->next;
+	}
+
+	if (elements < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", ln_num);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	curr = *stack;
+
+	tmp = (curr->next->n) - (curr->n);
+	curr->next->n = tmp;
+	*stack = curr->next;
+	free(curr);
 }

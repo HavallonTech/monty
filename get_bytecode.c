@@ -17,7 +17,7 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 	/*	{"pop", op_pop},*/
 		/*{"swap", op_swap}*/
 		/*{"nop", op_nop},*/
-		/*{"sub", op_sub},*/
+		{"sub", op_sub},
 		{"mod", op_mod},
 	/*	{"pchar", op_pchar},*/
 		{"pstr", op_pstr},
