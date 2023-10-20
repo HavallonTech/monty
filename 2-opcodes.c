@@ -65,3 +65,16 @@ void op_swap(stack_t **stack, unsigned int ln_num)
 	curr->n = curr->next->n;
 	curr->next->n = tmp;
 }
+
+/**
+ * op_nop - function does not do anything in the stack
+ * @stack: double pointer to the stack(head)
+ * @ln_num: line number for error checking
+ * 
+ * Return: returns void
+ */
+void op_nop(stack_t **stack, unsigned int ln_num)
+{
+	(void)stack;
+	(void)ln_num;
+}

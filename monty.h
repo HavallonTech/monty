@@ -66,6 +66,8 @@ void op_sub(stack_t **stack, unsigned int ln_num);
 void op_swap(stack_t **stack, unsigned int ln_num);
 void op_pop(stack_t **stack, unsigned int ln_num);
 void op_pint(stack_t **stack, unsigned int ln_num);
+void op_nop(stack_t **stack, unsigned int ln_num);
+
 
 void free_stack(stack_t *head);
 #endif /*_MONTY_H_*/
