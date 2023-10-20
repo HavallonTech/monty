@@ -11,20 +11,21 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		{"push", op_push},
 		{"pall", op_pall},
 		{"add", op_add},
+/*		{"div", op_div},*/
+		{"mul", op_mul},
 	/*	{"pint", op_pint},*/
 	/*	{"pop", op_pop},*/
-	/*	{"swap", op_swap},*/
-	/*	{"nop", op_nop},*/
-	/*	{"sub", op_sub},*/
-	/*	{"div", op_div},*/
-		{"mul", op_mul},
-	/*	{"mod", op_mod},*/
+		/*{"swap", op_swap}*/
+		/*{"nop", op_nop},*/
+		/*{"sub", op_sub},*/
+		{"mod", op_mod},
 	/*	{"pchar", op_pchar},*/
-	/*	{"pstr", op_pstr},*/
-	/*	{"rotl", op_rotl},*/
-	/*	{"rotr", op_rotr},*/
-	/*	{"queue", op_queue},*/
-	/*	{"stack", op_stack},*/
+		/*{"pstr", op_pstr},*/
+		/*{"rotl", op_rotl},*/
+		{"rotr", op_rotr},
+		{"div", op_div},
+		/*{"queue", op_queue},*/
+		/*{"stack", op_stack},*/
 		{NULL, NULL}
 	};
 	int n = 0;

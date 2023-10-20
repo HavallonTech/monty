@@ -62,21 +62,60 @@ void op_div(stack_t **stack, unsigned int ln_num)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't divid, stack too short\n", ln_num);
+		fprintf(stderr, "L%d: can't div, stack too short\n", ln_num);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	curr = *stack;
 	if (curr->n == 0)
 	{
-		fprintf(stderr, "L%d: Cannot divid by zero\n", ln_num);
+		fprintf(stderr, "L%d: division by zero\n", ln_num);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	/* check if curr->next->n and curr->n are numbers */
-	/*if (  &&   ) */
-	temp = (curr->next->n) / (curr->n);
-	curr->next->n = temp;
+	/*	if (is_valid_int(curr->next->n) && is_valid_int(curr->n)) */
+	if (isdigit(curr->next->n) && isdigit(curr->n))
+	{
+		temp = (curr->next->n) / (curr->n);
+		curr->next->n = temp;
+		*stack = curr->next;
+		free(curr);
+	}
+}
+
+/**
+ * op_mod - computes the rest of the division of the second
+ * top element of the stack by the top element of the stack
+ * @stack: stack head
+ * @ln_num: line_number
+ * Return: no return
+ */
+void op_mod(stack_t **stack, unsigned int ln_num)
+{
+	stack_t *curr;
+	int len = 0, tmp;
+	curr = *stack;
+	while (curr)
+	{
+		curr = curr->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", ln_num);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	curr = *stack;
+	if (curr->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", ln_num);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (curr->next->n) % (curr->n);
+	curr->next->n = tmp;
 	*stack = curr->next;
 	free(curr);
 }
