@@ -109,7 +109,7 @@ void free_stack(stack_t *head)
 void op_mul(stack_t **stack, unsigned int ln_num)
 {
 	stack_t *curr;
-	int len = 0, temp;
+	int len = 0, mul;
 
 	curr = *stack;
 	while (curr)
@@ -123,9 +123,7 @@ void op_mul(stack_t **stack, unsigned int ln_num)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	curr = *stack;
-	temp = (curr->next->n) * (curr->n);
-	curr->next->n = temp;
-	*stack = curr->next;
-	free(stack);
+	mul = ((*stack)->next->n) * ((*stack)->n);
+	pop(stack);
+	(*stack)->n = mul;
 }
