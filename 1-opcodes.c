@@ -65,7 +65,7 @@ void op_add(stack_t **stack, unsigned int ln_num)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d, can't add element to the stack\n", ln_num);
+		fprintf(stderr, "L%d, can't add, stack too short\n", ln_num);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
