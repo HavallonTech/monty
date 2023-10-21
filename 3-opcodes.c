@@ -51,8 +51,8 @@ void op_rotr(stack_t **stack, __attribute__((unused)) unsigned int ln_num)
  */
 void op_div(stack_t **stack, unsigned int ln_num)
 {
-	stack_t *curr;
-	int len = 0, temp;
+	stack_t *curr = NULL;
+	int len = 0, div;
 
 	curr = *stack;
 	while (curr)
@@ -66,22 +66,21 @@ void op_div(stack_t **stack, unsigned int ln_num)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	curr = *stack;
-	if (curr->n == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", ln_num);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	/* check if curr->next->n and curr->n are numbers */
-	/*	if (is_valid_int(curr->next->n) && is_valid_int(curr->n)) */
-	if (isdigit(curr->next->n) && isdigit(curr->n))
-	{
-		temp = (curr->next->n) / (curr->n);
-		curr->next->n = temp;
-		*stack = curr->next;
-		free(curr);
-	}
+	/**
+	 * check if curr->next->n and curr->n are numbers is not needed
+	 * this is because div does not take an argument and the check for numbers
+	 * have been passed in the op_push function
+	 */
+	/*if (isdigit(curr->next->n) && isdigit(curr->n))*/
+	div = (*stack)->next->n / (*stack)->n;
+	pop(stack);
+	(*stack)->n = div;
 }
 
 /**

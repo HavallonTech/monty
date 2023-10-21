@@ -52,6 +52,7 @@ instruction_t *get_bc_opcode(const char *opcode);
 /*aux functions*/
 void pushNode(stack_t **stack, int val);
 int is_valid_int(char *s);
+void pop(stack_t **stack);
 
 /*get_bc_opcode*/
 void op_push(stack_t **stack, unsigned int ln_num);

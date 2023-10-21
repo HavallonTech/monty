@@ -47,3 +47,20 @@ int is_valid_int(char *s)
 	}
 	return (1);
 }
+/**
+ * pop - function removes the top element from the stack
+ * @stack: double pointer to the stack(head)
+ * Return: returns void
+ */
+void pop(stack_t **stack)
+{
+	stack_t *temp = NULL;
+	
+	if (*stack == NULL)
+		return;
+	temp = *stack;
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
+}

@@ -11,7 +11,7 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		{"push", op_push},
 		{"pall", op_pall},
 		{"add", op_add},
-		/*		{"div", op_div},*/
+		{"div", op_div},
 		{"mul", op_mul},
 		{"pint", op_pint},
 		{"pop", op_pop},
@@ -23,7 +23,6 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		{"pstr", op_pstr},
 		/*{"rotl", op_rotl},*/
 		{"rotr", op_rotr},
-		{"div", op_div},
 		/*{"queue", op_queue},*/
 		/*{"stack", op_stack},*/
 		{NULL, NULL}
