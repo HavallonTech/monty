@@ -19,7 +19,7 @@ instruction_t *get_bc_opcode(const char *bc_opcode)
 		{"nop", op_nop},
 		{"sub", op_sub},
 		{"mod", op_mod},
-		/*	{"pchar", op_pchar},*/
+		{"pchar", op_pchar},
 		{"pstr", op_pstr},
 		/*{"rotl", op_rotl},*/
 		{"rotr", op_rotr},

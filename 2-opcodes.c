@@ -78,3 +78,30 @@ void op_nop(stack_t **stack, unsigned int ln_num)
 	(void)stack;
 	(void)ln_num;
 }
+
+/**
+ * op_pchar - function prints top character of stack as ASCII
+ * @stack: double pointer to the stack(head)
+ * @ln_num: line number for error check
+ * Return: returns void
+ */
+
+void op_pchar(stack_t **stack, unsigned int ln_num)
+{
+	int val = 0;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", ln_num);
+		exit(EXIT_FAILURE);
+	}
+
+	val = (*stack)->n;
+	if (val < 0 || val > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", ln_num);
+		exit(EXIT_FAILURE);
+	}
+	putchar(val);
+	putchar('\n');
+}
