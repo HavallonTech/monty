@@ -53,31 +53,35 @@ void op_pall(stack_t **stack, unsigned int ln_num)
  */
 void op_add(stack_t **stack, unsigned int ln_num)
 {
-	stack_t *curr;
-	int len = 0, temp;
+	int len = 0, sum;
+	stack_t *curr = NULL;
+	stack_t *temp = NULL;
 
-	curr = *stack;
-
-	while (curr)
+	temp = *stack;
+	while (temp)
 	{
 		len++;
-		curr = curr->next;
+		(temp) = (temp)->next;
 	}
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d, can't add element to the stack\n", ln_num);
-		/*	fclose(bcFile);*/
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	/**
+	 * This pops the top stack to make the previous stack hold the value
+	 * you can easily use the pop function if defined pop(stack)
+	 */
+	sum = (*stack)->n + (*stack)->next->n;
+	if (*stack == NULL)
+		return;
 	curr = *stack;
-	if (isdigit(curr->n) && isdigit(curr->next->n))
-	{
-		temp = curr->n + curr->next->n;
-		curr->next->n = temp;
-		*stack = curr->next;
-		/*free(curr);*/
-	}
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(curr);
+	(*stack)->n = sum;
 }
 /**
  * free_stack - function to add element in the stack

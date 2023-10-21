@@ -24,7 +24,7 @@ void op_pop(stack_t **stack, unsigned int ln_num)
  * op_pint - function prints the value at the top of the stack
  * @stack: double pointer to the stack(head)
  * @ln_num: line number for error checking
- * 
+ *
  * Return: returns void
  */
 void op_pint(stack_t **stack, unsigned int ln_num)
@@ -70,7 +70,7 @@ void op_swap(stack_t **stack, unsigned int ln_num)
  * op_nop - function does not do anything in the stack
  * @stack: double pointer to the stack(head)
  * @ln_num: line number for error checking
- * 
+ *
  * Return: returns void
  */
 void op_nop(stack_t **stack, unsigned int ln_num)
