@@ -94,7 +94,7 @@ void op_div(stack_t **stack, unsigned int ln_num)
 void op_mod(stack_t **stack, unsigned int ln_num)
 {
 	stack_t *curr;
-	int len = 0, tmp;
+	int len = 0, mod;
 
 	curr = *stack;
 
@@ -109,17 +109,15 @@ void op_mod(stack_t **stack, unsigned int ln_num)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	curr = *stack;
-	if (curr->n == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", ln_num);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (curr->next->n) % (curr->n);
-	curr->next->n = tmp;
-	*stack = curr->next;
-	free(curr);
+	mod = (*stack)->next->n % (*stack)->n;
+	pop(stack);
+	(*stack)->n = mod;
 }
 /**
  * op_pstr - a function to prints the string starting at the top of the stack
